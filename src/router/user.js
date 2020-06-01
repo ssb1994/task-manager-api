@@ -11,6 +11,8 @@ const router = new express.Router()
 router.post('/users', async(req, res) => {
     const user = new User(req.body)
 
+    console.log(user)
+
     try {
         const token = await user.generateAuthToken()
         user.tokens = user.tokens.concat({ token })
