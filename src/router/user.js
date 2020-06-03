@@ -17,20 +17,12 @@ router.post('/users', async(req, res) => {
         const token = await user.generateAuthToken()
         user.tokens = user.tokens.concat({ token })
 
+        await user.save()
         res.send({
             status: 1,
             message: 'Registered User Successfully',
-            user,
             token
         })
-
-
-        await user.save()
-            // res.send({
-            //     status: 1,
-            //     message: 'Registered User Successfully',
-            //     token
-            // })
 
         // sendWelcomeEmail(user.email, user.name)
     } catch (e) {
