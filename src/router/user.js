@@ -20,6 +20,7 @@ router.post('/users', async(req, res) => {
         res.send({
             status: 1,
             message: 'Registered User Successfully',
+            user,
             token
         })
 
