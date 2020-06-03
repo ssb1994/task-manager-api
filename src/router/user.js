@@ -207,5 +207,4 @@ router.get('/users/:id/avatar', auth, async(req, res) => {
     }
 })
 
-
 module.exports = router
