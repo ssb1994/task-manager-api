@@ -17,12 +17,19 @@ router.post('/users', async(req, res) => {
         const token = await user.generateAuthToken()
         user.tokens = user.tokens.concat({ token })
 
-        await user.save()
         res.send({
             status: 1,
             message: 'Registered User Successfully',
             token
         })
+
+
+        await user.save()
+            // res.send({
+            //     status: 1,
+            //     message: 'Registered User Successfully',
+            //     token
+            // })
 
         // sendWelcomeEmail(user.email, user.name)
     } catch (e) {
@@ -106,8 +113,6 @@ router.get('/users/:id', async(req, res) => {
 })
 
 router.patch('/users/me', auth, async(req, res) => {
-    console.log(req.user)
-    console.log(req.body)
 
     const updateKeys = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'age', 'password']
