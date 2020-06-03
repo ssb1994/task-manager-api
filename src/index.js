@@ -10,7 +10,7 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
-app.use(cors())
+
 
 
 
